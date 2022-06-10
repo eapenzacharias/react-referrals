@@ -3,7 +3,6 @@ import thunk from 'redux-thunk';
 import logger from 'redux-logger';
 import { combineReducers } from 'redux';
 
-
 const rootReducer = combineReducers({
 
 });
