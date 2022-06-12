@@ -1,10 +1,40 @@
 import {
   Button, Container, FormControl, Link, TextField,
 } from '@mui/material';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import MyText from './typography';
+import { signIn } from '../store/users';
 
 const LoginForm = () => {
-  const userId = '';
+  const dispatch = useDispatch();
+
+  const [state, setState] = React.useState({
+    email: '',
+    password: '',
+  });
+
+  const isSignedIn = useSelector(
+    (state) => state.usersReducer.currentUser.isSignedIn,
+  );
+
+  useEffect(() => {
+    if (isSignedIn) console.log('signed in');
+  }, [isSignedIn]);
+
+  const handleChange = (evt) => {
+    evt.preventDefault();
+    const { value } = evt.target;
+    setState({
+      ...state,
+      [evt.target.name]: value,
+    });
+  };
+
+  const submitForm = (evt) => {
+    evt.preventDefault();
+    dispatch(signIn(state));
+  };
   return (
     <>
       <Container
@@ -18,27 +48,29 @@ const LoginForm = () => {
         }}
       >
         <MyText text="Log In" type="h4" />
-        <form>
+        <form onSubmit={submitForm}>
           <FormControl sx={{ width: '100%' }}>
             <TextField
               margin="dense"
               required
-              id="standard-required"
               label="Email"
+              name="email"
               variant="standard"
               type="email"
               autoComplete="email"
+              onChange={handleChange}
             />
             <TextField
               required
               margin="dense"
-              id="standard-password-input"
+              name="password"
               label="Password"
               type="password"
               autoComplete="current-password"
               variant="standard"
+              onChange={handleChange}
             />
-            <Button variant="contained" sx={{ margin: '2rem 0' }}>Sign In</Button>
+            <Button type="submit" variant="contained" sx={{ margin: '2rem 0' }}>Sign In</Button>
           </FormControl>
           <Link href="#signup" underline="always" sx={{ fontWeight: 500 }}>
             Sign Up
@@ -48,7 +80,6 @@ const LoginForm = () => {
             Forgot your password?
           </Link>
         </form>
-        {userId}
       </Container>
     </>
   );
