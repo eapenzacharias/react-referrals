@@ -38,6 +38,7 @@ const LoginForm = () => {
   return (
     <>
       <Container
+        className="centralized"
         margin="dense"
         maxWidth="xs"
         sx={{
