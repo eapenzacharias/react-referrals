@@ -2,20 +2,21 @@ import {
   Container, Button, FormControl, TextField,
 } from '@mui/material';
 import React, { useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 // import { signIn } from '../store/users';
 import MyText from './typography';
+import { sendInvite } from '../store/referrals';
 
 const Dashboad = () => {
   const navigate = useNavigate();
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
+
+  const currentUser = useSelector((state) => state.usersReducer.currentUser);
 
   const [state, setState] = React.useState({
     email: '',
-    copySuccess: '',
-
   });
 
   const isSignedIn = useSelector(
@@ -41,10 +42,9 @@ const Dashboad = () => {
 
   const submitForm = (evt) => {
     evt.preventDefault();
-    // dispatch(signIn(state));
+    dispatch(sendInvite(state, currentUser));
   };
 
-  const currentUser = useSelector((state) => state.usersReducer.currentUser);
   return (
     <>
       <MyText text={`Hello ${currentUser.attributes.name}!`} type="h1" />

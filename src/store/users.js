@@ -5,7 +5,8 @@ const SIGN_IN = 'auth/signin';
 const SIGN_UP = 'auth/signup';
 const SIGN_OUT = 'auth/signout';
 
-const url = 'https://rails-referrals.herokuapp.com/api/';
+// const url = 'https://rails-referrals.herokuapp.com/api/';
+const url = 'http://localhost:3000/api/';
 
 export const signIn = (user) => async (dispatch) => {
   const currentState = JSON.parse(JSON.stringify(initialState));
