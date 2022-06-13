@@ -1,4 +1,5 @@
 import { Container } from '@mui/material';
+import { Routes, Route } from 'react-router-dom';
 import React from 'react';
 import './assets/styles/App.css';
 import LoginForm from './components/login';
@@ -14,8 +15,10 @@ function App() {
     <div className="App">
       <Container>
         <Sample />
-        <LoginForm />
-        <SignUpForm />
+        <Routes>
+          <Route path="login" element={<LoginForm />} />
+          <Route path="signup" element={<SignUpForm />} />
+        </Routes>
       </Container>
     </div>
   );
