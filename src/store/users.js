@@ -4,7 +4,7 @@ import initialState from './initialState';
 const SIGN_IN = 'auth/signin';
 const SIGN_UP = 'auth/signup';
 
-const url = 'https://rails-referrals.herokuapp.com/api/auth/';
+const url = 'https://rails-referrals.herokuapp.com/api/';
 
 export const signIn = (user) => async (dispatch) => {
   const currentState = JSON.parse(JSON.stringify(initialState));
@@ -13,7 +13,7 @@ export const signIn = (user) => async (dispatch) => {
     'Content-Type': 'application/json',
   };
   axios
-    .post(`${url}sign_in`, user, { headers })
+    .post(`${url}auth/sign_in`, user, { headers })
     .then((response) => {
       currentState.currentUser.isSignedIn = true;
       currentState.currentUser.attributes = response.data.data;
@@ -35,7 +35,7 @@ export const signUp = (user) => async (dispatch) => {
     'Content-Type': 'application/json',
   };
   axios
-    .post(url, user, { headers })
+    .post(`${url}auth`, user, { headers })
     .then((response) => {
       console.log('Signed Up');
       currentState.currentUser.isSignedIn = false;

@@ -3,11 +3,13 @@ import {
 } from '@mui/material';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import MyText from './typography';
 import { signIn } from '../store/users';
 
 const LoginForm = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const [state, setState] = React.useState({
     email: '',
@@ -19,7 +21,7 @@ const LoginForm = () => {
   );
 
   useEffect(() => {
-    if (isSignedIn) console.log('signed in');
+    if (isSignedIn) navigate('/');
   }, [isSignedIn]);
 
   const handleChange = (evt) => {
@@ -73,7 +75,7 @@ const LoginForm = () => {
             />
             <Button type="submit" variant="contained" sx={{ margin: '2rem 0' }}>Sign In</Button>
           </FormControl>
-          <Link href="#signup" underline="always" sx={{ fontWeight: 500 }}>
+          <Link href="/signup" underline="always" sx={{ fontWeight: 500 }}>
             Sign Up
           </Link>
           <br />

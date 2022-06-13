@@ -98,7 +98,7 @@ const SignUpForm = () => {
             />
             <Button type="submit" variant="contained" sx={{ margin: '2rem 0' }}>Sign Up</Button>
           </FormControl>
-          <Link href="#signup" underline="always" sx={{ fontWeight: 500 }}>
+          <Link href="/login" underline="always" sx={{ fontWeight: 500 }}>
             Login In
           </Link>
           <br />
