@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import {
   Button, Container, FormControl, Link, TextField,
 } from '@mui/material';
@@ -8,6 +9,7 @@ import MyText from './typography';
 
 const SignUpForm = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const [state, setState] = React.useState({
     first_name: '',
@@ -23,7 +25,7 @@ const SignUpForm = () => {
   );
 
   useEffect(() => {
-    if (isSignedUp) console.log('signed up');
+    if (isSignedUp) navigate('/login');
   }, [isSignedUp]);
 
   const handleChange = (evt) => {
