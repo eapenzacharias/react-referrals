@@ -4,6 +4,7 @@ import {
 import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { CopyToClipboard } from 'react-copy-to-clipboard';
 // import { signIn } from '../store/users';
 import MyText from './typography';
 
@@ -61,6 +62,12 @@ const Dashboad = () => {
         <MyText text="Invite your friends!" type="h4" />
         <MyText text="Share this link or send an invite." type="p" />
         <MyText text={`http://localhost:3000/?ref=${currentUser.attributes.id}`} type="link" />
+        <CopyToClipboard
+          text={`http://localhost:3000/?ref=${currentUser.attributes.id}`}
+          onCopy={() => alert('Copied')}
+        >
+          <Button variant="outlined" size="small">Copy Link</Button>
+        </CopyToClipboard>
         <form onSubmit={submitForm}>
           <FormControl sx={{ width: '100%' }}>
             <TextField
