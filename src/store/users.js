@@ -3,6 +3,7 @@ import initialState from './initialState';
 
 const SIGN_IN = 'auth/signin';
 const SIGN_UP = 'auth/signup';
+const SIGN_OUT = 'auth/signout';
 
 const url = 'https://rails-referrals.herokuapp.com/api/';
 
@@ -52,11 +53,28 @@ export const signUp = (user) => async (dispatch) => {
     });
 };
 
+export const signOut = (user) => async (dispatch) => {
+  const { headers } = user;
+  axios
+    .delete(`${url}auth/sign_out`, { headers })
+    .then(() => {
+      dispatch({
+        type: SIGN_OUT,
+        payload: initialState,
+      });
+    })
+    .catch((error) => {
+      console.error('There was an error!', error);
+    });
+};
+
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case SIGN_IN:
       return action.payload;
     case SIGN_UP:
+      return action.payload;
+    case SIGN_OUT:
       return action.payload;
     default:
       return state;

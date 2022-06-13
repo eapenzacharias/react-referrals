@@ -1,17 +1,20 @@
 import * as React from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import {
   AppBar, Box, Button, Container, IconButton, Menu, MenuItem, Toolbar, Tooltip, Typography,
 } from '@mui/material';
 import AddLinkIcon from '@mui/icons-material/AddLink';
 import MenuIcon from '@mui/icons-material/Menu';
 import { AccountCircle } from '@mui/icons-material';
+import { signOut } from '../store/users';
 
 const pages = ['Login', 'Signup'];
 
 const ResponsiveAppBar = () => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
+  const dispatch = useDispatch();
+  const currentUser = useSelector((state) => state.usersReducer.currentUser);
 
   const isSignedIn = useSelector(
     (state) => state.usersReducer.currentUser.isSignedIn,
@@ -30,6 +33,11 @@ const ResponsiveAppBar = () => {
 
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
+  };
+
+  const userSignOut = (evt) => {
+    evt.preventDefault();
+    dispatch(signOut(currentUser));
   };
 
   return (
@@ -147,7 +155,7 @@ const ResponsiveAppBar = () => {
                 onClose={handleCloseUserMenu}
               >
                 <MenuItem key="logout" onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center" component="a" variant="p" href="logout">Logout</Typography>
+                  <Typography textAlign="center" component="a" variant="p" onClick={userSignOut}>Logout</Typography>
                 </MenuItem>
               </Menu>
             </Box>
