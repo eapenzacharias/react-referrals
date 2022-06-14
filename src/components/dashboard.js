@@ -17,7 +17,6 @@ const Dashboad = () => {
   const currentUser = useSelector((state) => state.usersReducer.currentUser);
 
   const referralData = useSelector((state) => state.referralReducer);
-  console.log(referralData.referrals);
 
   const [state, setState] = React.useState({
     email: '',
