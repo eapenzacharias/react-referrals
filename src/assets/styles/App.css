@@ -1,0 +1,16 @@
+.App {
+  text-align: center;
+  background-color: #f3f3f3;
+  min-height: 100vh;
+}
+
+.centralized {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+a {
+  text-decoration: none;
+}
