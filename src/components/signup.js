@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import {
   Button, Container, FormControl, Link, TextField,
 } from '@mui/material';
@@ -11,13 +11,18 @@ const SignUpForm = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  const { refID } = useParams();
+  let referrer = '';
+  if (parseInt(refID, 10) > 0) {
+    referrer = `${refID}`;
+  }
+
   const [state, setState] = React.useState({
-    first_name: '',
-    last_name: '',
+    name: '',
     email: '',
     password: '',
     passwordConfirm: '',
-    date_of_birth: '',
+    referrer,
   });
 
   const isSignedUp = useSelector(

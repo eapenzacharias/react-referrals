@@ -25,6 +25,7 @@ function App() {
             <>
               <Route path="login" element={<LoginForm />} />
               <Route path="signup" element={<SignUpForm />} />
+              <Route path="ref/:refID" element={<SignUpForm />} />
               <Route path="/" element={<LoginForm />} />
             </>
           )}
