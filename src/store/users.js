@@ -6,10 +6,10 @@ const SIGN_UP = 'auth/signup';
 const SIGN_OUT = 'auth/signout';
 
 const url = 'https://rails-referrals.herokuapp.com/api/';
+// const url = 'http://localhost:3000/api/';
 
 export const signIn = (user) => async (dispatch) => {
   const currentState = JSON.parse(JSON.stringify(initialState));
-  console.log(user);
   const headers = {
     'Content-Type': 'application/json',
   };
@@ -19,7 +19,6 @@ export const signIn = (user) => async (dispatch) => {
       currentState.currentUser.isSignedIn = true;
       currentState.currentUser.attributes = response.data.data;
       currentState.currentUser.headers = response.headers;
-      console.log('Signed In', currentState.currentUser.headers);
       dispatch({
         type: SIGN_IN,
         payload: currentState,
@@ -38,7 +37,6 @@ export const signUp = (user) => async (dispatch) => {
   axios
     .post(`${url}auth`, user, { headers })
     .then((response) => {
-      console.log('Signed Up');
       currentState.currentUser.isSignedIn = false;
       currentState.currentUser.isSignedUp = true;
       currentState.currentUser.attributes = response.data.data;

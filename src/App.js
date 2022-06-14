@@ -19,16 +19,17 @@ function App() {
   return (
     <div className="App">
       <ResponsiveAppBar />
-      <Container>
+      <Container sx={{ margin: '2rem auto' }}>
         <Routes>
           {!isSignedIn && (
             <>
               <Route path="login" element={<LoginForm />} />
               <Route path="signup" element={<SignUpForm />} />
+              <Route path="ref/:refID" element={<SignUpForm />} />
               <Route path="/" element={<LoginForm />} />
             </>
           )}
-          {isSignedIn && (<Route path="/" element={<Dashboad />} />)}
+          {isSignedIn && (<Route path="*" element={<Dashboad />} />)}
         </Routes>
       </Container>
     </div>

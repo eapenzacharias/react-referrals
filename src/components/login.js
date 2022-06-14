@@ -21,7 +21,7 @@ const LoginForm = () => {
   );
 
   useEffect(() => {
-    if (isSignedIn) navigate('/');
+    if (isSignedIn) navigate('/home');
   }, [isSignedIn]);
 
   const handleChange = (evt) => {

@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 import {
   AppBar, Box, Button, Container, IconButton, Menu, MenuItem, Toolbar, Tooltip, Typography,
 } from '@mui/material';
@@ -49,7 +50,7 @@ const ResponsiveAppBar = () => {
             variant="h6"
             noWrap
             component="a"
-            href="/"
+            href="#"
             sx={{
               mr: 2,
               display: { xs: 'none', md: 'flex' },
@@ -93,7 +94,9 @@ const ResponsiveAppBar = () => {
               >
                 {pages.map((page) => (
                   <MenuItem key={page} onClick={handleCloseNavMenu}>
-                    <Typography component="a" variant="p" href={`/${page.toLowerCase()}`} textAlign="center">{page}</Typography>
+                    <Link to={`/${page.toLowerCase()}`}>
+                      <Typography component="p" variant="p" textAlign="center">{page}</Typography>
+                    </Link>
                   </MenuItem>
                 ))}
               </Menu>
@@ -120,14 +123,14 @@ const ResponsiveAppBar = () => {
 
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {!isSignedIn && pages.map((page) => (
-              <Button
-                key={page}
-                href={`/${page.toLowerCase()}`}
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: 'white', display: 'block' }}
-              >
-                {page}
-              </Button>
+              <Link to={`/${page.toLowerCase()}`} key={page}>
+                <Button
+                  onClick={handleCloseNavMenu}
+                  sx={{ my: 2, color: 'white', display: 'block' }}
+                >
+                  {page}
+                </Button>
+              </Link>
             ))}
           </Box>
 
