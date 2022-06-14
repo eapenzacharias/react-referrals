@@ -15,8 +15,8 @@ const MyText = ({ text, type }) => {
             sx={{
               fontFamily: 'monospace',
               fontWeight: '300',
-              margin: '1rem',
-              padding: '0.25rem 0',
+              margin: '1rem 0',
+              padding: '0.25rem',
               backgroundColor: '#f3f3f3',
               fontSize: '1rem',
             }}

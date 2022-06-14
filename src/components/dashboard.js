@@ -68,9 +68,9 @@ const Dashboad = () => {
       >
         <MyText text="Invite your friends!" type="h4" />
         <MyText text="Share this link or send an invite." type="p" />
-        <MyText text={`http://localhost:3001/ref/${currentUser.attributes.id}`} type="link" />
+        <MyText text={`https://eapenzacharias.github.io/react-referrals/#/ref/${currentUser.attributes.id}`} type="link" />
         <CopyToClipboard
-          text={`http://localhost:3001/ref/${currentUser.attributes.id}`}
+          text={`https://eapenzacharias.github.io/react-referrals/#/ref/${currentUser.attributes.id}`}
           onCopy={() => alert('Copied')}
         >
           <Button variant="outlined" size="small">Copy Link</Button>

@@ -3,8 +3,8 @@ import axios from 'axios';
 const SEND_INVITE = 'sendInvite';
 const GET_REFERRALS = 'referrals';
 
-// const url = 'https://rails-referrals.herokuapp.com/api/';
-const url = 'http://localhost:3000/api/';
+const url = 'https://rails-referrals.herokuapp.com/api/';
+// const url = 'http://localhost:3000/api/';
 
 export const sendInvite = (email, user) => async (dispatch) => {
   const currentState = [];
